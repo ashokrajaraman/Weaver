@@ -1,7 +1,6 @@
 #############################
-BOOST = /home/yangli9/tools/boost_1_55_0/
-#BOOST_OPT = /home/yangli9/tools/boost_1_55_0/bin.v2/libs/program_options/build/gcc-4.8/release/threading-multi/libboost_program_options.so.1.55.0
-BOOST_OPT = /home/yangli9/tools/boost_1_55_0/lib/libboost_program_options.a
+BOOST = /usr0/home/ashokr/local/boost_1_61_0/
+BOOST_OPT = /usr0/home/ashokr/local/boost_1_61_0/bin.v2/libs/program_options/build/gcc-4.8/release/link-static/threading-multi/libboost_program_options.a
 #############################
 CXX      = g++ -std=c++0x -O3
 #WALL = -Wall -O3

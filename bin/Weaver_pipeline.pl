@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 #
 ######
@@ -67,7 +67,7 @@ if(!(-e $FULLFA)){
 
 
 $P = $P || 50; # default thread
-$TorN || "T"; # default tumor sample
+$TorN = $TorN || "T"; # default tumor sample
 $SEX = $SEX || "F"; # default female Y discard
 $GAP = $GAP || "$Bin/../data/GAP_20140416";
 
