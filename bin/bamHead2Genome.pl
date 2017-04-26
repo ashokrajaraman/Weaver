@@ -25,16 +25,16 @@ while(<STDIN>){
 		}
 		$length = substr($m[2], 3);
 		if($number == 0){
-			if(length($chr) > 5 || substr($chr,3,1) eq "M" || $SEX eq "F" && substr($chr,3,1) eq "Y"){
-				next;
-			}
+            #if(length($chr) > 5 || substr($chr,3,1) eq "M" || $SEX eq "F" && substr($chr,3,1) eq "Y"){
+			#	next;
+			#}
 			print O1 $chr,"\t",$length,"\n";
 			print O2 $chr,"\t",$length,"\n";
 		}
 		else{
-			if(length($chr) > 2 || substr($chr,0,1) eq "M" || $SEX eq "F" && substr($chr,0,1) eq "Y"){
-				next;
-			}
+            #if(length($chr) > 2 || substr($chr,0,1) eq "M" || $SEX eq "F" && substr($chr,0,1) eq "Y"){
+			#	next;
+			#}
 			print O1 $chr,"\t",$length,"\n";
 			print O2 "chr".$chr,"\t",$length,"\n";
 		}

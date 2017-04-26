@@ -1,6 +1,21 @@
 #!/usr/bin/perl
 #
 open(I,"<",shift@ARGV);
+$CHR=shift@ARGV;
+$flag=0;
+$k=substr($CHR,0,3);
+if (substr($CHR,0,3) eq "chr"){
+    $flag = 1;
+}
+else{
+    $flag = 0;
+}
+if ($flag == 0 && (length($CHR) > 2 || substr($CHR,0,1) eq "Y" || substr($CHR,0,1) eq "M")){
+    exit 0;
+}
+elsif ($flag == 1 && (length($CHR) > 5 || substr($CHR,3,1) eq "Y" || substr($CHR,3,1) eq "M")){
+    exit 0;
+}
 while(<I>){
 	chomp;
 	@m = split(/\s+/);

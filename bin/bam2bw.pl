@@ -27,11 +27,14 @@ for($i = 0; $i < scalar @ALL; $i++){
 	my $pid = $pm->start and next;
 	$CHR = $ALL[$i];
 	system("$EXT/samtools view -b $bam $CHR | $EXT/genomeCoverageBed -ibam stdin -g $bam.$CHR.GG -bga > $bam.$CHR.bed");
-	system("cat $bam.$CHR.bed | $Bin/bedTofixWig.pl $bam.$CHR.GG > $bam.$CHR.wig; rm $bam.$CHR.bed");
+    system("grep \"$CHR\" $bam.$CHR.bed > $bam.$CHR.subset.bed");
+	system("cat $bam.$CHR.bed | $Bin/bedTofixWig.pl $bam.$CHR.GG $CHR > $bam.$CHR.wig; rm $bam.$CHR.bed");
 	$pm->finish;
 }
 $pm->wait_all_children;
 system("cat $bam.*.wig > $bam.wig; rm $bam.*.wig");
+system("cat $bam.*.subset.bed > genome_coverage.bed");#rm *.subset.bed");
+system("python coverage_calculator_bedgraph.py genome_coverage.bed > $bam.coverage; rm genome_coverage.bed");
 if($RUN_TYPE eq "lite"){
 	system("rm $bam.*.GG");
 }
