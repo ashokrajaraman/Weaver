@@ -34,7 +34,7 @@ for($i = 0; $i < scalar @ALL; $i++){
 $pm->wait_all_children;
 system("cat $bam.*.wig > $bam.wig; rm $bam.*.wig");
 system("cat $bam.*.subset.bed > genome_coverage.bed;rm *.subset.bed");
-system("python coverage_calculator_bedgraph.py genome_coverage.bed > $bam.coverage; rm genome_coverage.bed");
+system("python "$Bin/coverage_calculator_bedgraph.py genome_coverage.bed > $bam.coverage; rm genome_coverage.bed");
 if($RUN_TYPE eq "lite"){
 	system("rm $bam.*.GG");
 }
