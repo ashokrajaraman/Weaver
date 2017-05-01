@@ -5,6 +5,9 @@ REFDIR=$2
 T1000=$3
 SEX=$4
 NNUM=$5
+THREADS=$6
+NORMAL_COV=$7
+
 BIN="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export LD_LIBRARY_PATH=${BIN}/../Weaver_SV/lib/:${LD_LIBRARY_PATH}
 
@@ -25,7 +28,10 @@ for K in ${ARR[@]}; do
 done
 wait
 CANCER_COV=`cat ${BAM}.coverage`
-NORMAL_COV=0
+re='^[0-9]+([.][0-9]+)?$'
+if ! [[ ${NORMAL_COV} =~ $re ]] ; then
+    NORMAL_COV=0
+fi
 
 FASTA=${REFDIR}.fasta
 if [ ! -f ${FASTA} ]; then
@@ -39,7 +45,7 @@ ${BIN}/Weaver PLOIDY \
     -m ${BIN}/../data/wgEncodeCrgMapabilityAlign100mer_number.bd \
     -w ${BAM}.wig -r 1 \
     -t ${CANCER_COV} -n ${NORMAL_COV} \
-    -p 16 >weaver_ploidy 2>weaver_ploidy_error
+    -p ${THREADS} >weaver_ploidy 2>weaver_ploidy_error
 
 ${BIN}/Weaver LITE \
     -f ${REFDIR}.fasta \
@@ -48,4 +54,4 @@ ${BIN}/Weaver LITE \
     -m ${BIN}/../data/wgEncodeCrgMapabilityAlign100mer_number.bd \
     -w ${BAM}.wig -r 1 \
     -t ${CANCER_COV} -n ${NORMAL_COV} \
-    -p 16 >weaver_lite 2>weaver_lite_error
+    -p  ${THREADS} >weaver_lite 2>weaver_lite_error
