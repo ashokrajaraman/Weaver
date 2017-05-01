@@ -39,7 +39,7 @@ if [ ! -f ${FASTA} ]; then
 fi
 
 ${BIN}/Weaver PLOIDY \
-    -f ${REFDIR}.fasta \
+    -f ${FASTA} \
     -s SNP \
     -S ${BAM}.Weaver.GOOD -g ${GAP%$SUFF} \
     -m ${BIN}/../data/wgEncodeCrgMapabilityAlign100mer_number.bd \
@@ -48,7 +48,7 @@ ${BIN}/Weaver PLOIDY \
     -p ${THREADS} >weaver_ploidy 2>weaver_ploidy_error
 
 ${BIN}/Weaver LITE \
-    -f ${REFDIR}.fasta \
+    -f ${FASTA} \
     -s SNP \
     -S ${BAM}.Weaver.GOOD -g ${GAP%$SUFF} \
     -m ${BIN}/../data/wgEncodeCrgMapabilityAlign100mer_number.bd \
