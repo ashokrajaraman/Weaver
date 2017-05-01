@@ -4,9 +4,9 @@ BAM=$1
 REFDIR=$2
 T1000=$3
 SEX=$4
-NNUM=$5
+NORMAL_COV=$5
 THREADS=$6
-NORMAL_COV=$7
+NNUM=$7
 
 BIN="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export LD_LIBRARY_PATH=${BIN}/../Weaver_SV/lib/:${LD_LIBRARY_PATH}
