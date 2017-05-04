@@ -11,7 +11,7 @@ NNUM=$7
 BIN="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export LD_LIBRARY_PATH=${BIN}/../Weaver_SV/lib/:${LD_LIBRARY_PATH}
 
-if [ "${NNUM}" -eq 1]; then
+if [[ "${NNUM}" -eq 1 ]]; then
     SUFF=_num
 fi
 
