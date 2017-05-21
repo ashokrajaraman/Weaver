@@ -32,6 +32,9 @@ re='^[0-9]+([.][0-9]+)?$'
 if ! [[ ${NORMAL_COV} =~ $re ]] ; then
     NORMAL_COV=0
 fi
+if ! [[ ${THREADS} =~ $re ]] ; then
+    THREADS=8
+fi
 
 FASTA=${REFDIR}.fasta
 if [ ! -f ${FASTA} ]; then
