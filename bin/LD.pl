@@ -38,10 +38,6 @@ while(<I>){
 	}
     my $check_index = 3;
     my $parse_index = 4;
-    if(substr($m[2],0,1) eq "r"){
-        $check_index = 4;
-        $parse_index = 9;
-    }
 	if(exists $hash{$chr}{$m[1]}){
 		if($hash{$chr}{$m[1]} eq $m[$check_index]){
 			if(exists $LINK{$chr}{"$temp_pos\t$m[1]"}){
@@ -53,10 +49,6 @@ while(<I>){
 				for $j ($parse_index .. $#s){
 					@k = split(/:/, $s[$j]);
 					@p = split(/:/, $m[$j]);
-                    if($parse_index == 9){
-					    @k = split(/|/, $s[$j]);
-					    @p = split(/|/, $m[$j]);
-                    }
 					if($k[0] == 0 && $p[0] == 0 || $k[1] == 0 && $p[1] == 0){
 						$AB1 ++;
 					}
