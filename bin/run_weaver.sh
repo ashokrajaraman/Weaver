@@ -18,7 +18,7 @@ fi
 GAP=${BIN}/../data/GAP_20140416_num
 GAPALPHA=${BIN}/../data/GAP_20140416
 
-ARR=(SV SNP)
+ARR=(WIG SV SNP)
 for K in ${ARR[@]}; do
     echo $K,${ARR}
     perl $BIN/Weaver_pipeline.pl ALL ${K} \
@@ -27,14 +27,6 @@ for K in ${ARR[@]}; do
         -k ${T1000} -s ${SEX} >weaver_${K} 2>weaver_${K}_error&
 done
 wait
-ARR=(WIG)
-for K in ${ARR[@]}; do
-    echo $K,${ARR}
-    perl $BIN/Weaver_pipeline.pl ALL ${K} \
-        -f ${REFDIR} \
-        -g ${GAPALPHA} -b ${BAM} \
-        -k ${T1000} -s ${SEX} >weaver_${K} 2>weaver_${K}_error
-done
 CANCER_COV=`cat ${BAM}.coverage`
 re='^[0-9]+([.][0-9]+)?$'
 if ! [[ ${NORMAL_COV} =~ $re ]] ; then
