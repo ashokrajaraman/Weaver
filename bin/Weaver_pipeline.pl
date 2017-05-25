@@ -125,6 +125,7 @@ $now_string = localtime;
 #-------------------
 if ($MODEFLAG  =~ /WIG/){
 	print RUNLOG "$now_string:\twig\n";
+    print STDOUT "Weaver_pipeline.pl ALL WIG";
 	system("$Bin/bam2bw.pl $RUN_TYPE $BAM $P $SEX");
 	$now_string = localtime;
 	print RUNLOG "$now_string:\twig done\n";
