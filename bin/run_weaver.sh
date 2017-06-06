@@ -44,7 +44,7 @@ fi
 ${BIN}/Weaver PLOIDY \
     -f ${FASTA} \
     -s SNP_dens \
-    -S ${BAM}.Weaver.FINAL_SV -g ${GAP%$SUFF} \
+    -S ${BAM}.Weaver.GOOD -g ${GAP%$SUFF} \
     -m ${BIN}/../data/wgEncodeCrgMapabilityAlign100mer_number.bd \
     -w ${BAM}.wig -r 1 \
     -t ${CANCER_COV} -n ${NORMAL_COV} \
@@ -53,7 +53,7 @@ ${BIN}/Weaver PLOIDY \
 ${BIN}/Weaver LITE \
     -f ${FASTA} \
     -s SNP_dens \
-    -S ${BAM}.Weaver.FINAL_SV -g ${GAP%$SUFF} \
+    -S ${BAM}.Weaver.GOOD -g ${GAP%$SUFF} \
     -m ${BIN}/../data/wgEncodeCrgMapabilityAlign100mer_number.bd \
     -w ${BAM}.wig -r 1 \
     -t ${CANCER_COV} -n ${NORMAL_COV} \
