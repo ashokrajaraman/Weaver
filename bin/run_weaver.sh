@@ -27,14 +27,6 @@ for K in ${ARR[@]}; do
         -k ${T1000} -s ${SEX} >weaver_${K} 2>weaver_${K}_error&
 done
 wait
-CANCER_COV=`cat ${BAM}.coverage`
-re='^[0-9]+([.][0-9]+)?$'
-if ! [[ ${NORMAL_COV} =~ $re ]] ; then
-    NORMAL_COV=0
-fi
-if ! [[ ${THREADS} =~ $re ]] ; then
-    THREADS=8
-fi
 
 FASTA=${REFDIR}.fasta
 if [ ! -f ${FASTA} ]; then
@@ -49,6 +41,16 @@ ${BIN}/Weaver PLOIDY \
     -w ${BAM}.wig -r 1 \
     -t ${CANCER_COV} -n ${NORMAL_COV} \
     -p ${THREADS} >weaver_ploidy 2>weaver_ploidy_error
+
+CANCER_COV=`grep "Estimated cancer haplotype coverage" weaver_ploidy | cut -f 2`  #`cat ${BAM}.coverage`
+NORMAL_COV=`grep "Estimated normal haplotype coverage" weaver_ploidy | cut -f 2`  #`cat ${BAM}.coverage`
+re='^[0-9]+([.][0-9]+)?$'
+if ! [[ ${NORMAL_COV} =~ $re ]] ; then
+    NORMAL_COV=0
+fi
+if ! [[ ${THREADS} =~ $re ]] ; then
+    THREADS=8
+fi
 
 ${BIN}/Weaver LITE \
     -f ${FASTA} \
