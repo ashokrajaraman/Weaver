@@ -51,6 +51,7 @@ fi
 if ! [[ ${THREADS} =~ $re ]] ; then
     THREADS=8
 fi
+NORMAL_COV=0
 
 ${BIN}/Weaver LITE \
     -f ${FASTA} \
