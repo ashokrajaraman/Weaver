@@ -39,8 +39,8 @@ ${BIN}/Weaver PLOIDY \
     -S ${BAM}.Weaver.GOOD -g ${GAP%$SUFF} \
     -m ${BIN}/../data/wgEncodeCrgMapabilityAlign100mer_number.bd \
     -w ${BAM}.wig -r 1 \
-    -t ${CANCER_COV} -n ${NORMAL_COV} \
     -p ${THREADS} >weaver_ploidy 2>weaver_ploidy_error
+    #-t ${CANCER_COV} -n ${NORMAL_COV} \
 
 CANCER_COV=`grep "Estimated cancer haplotype coverage" weaver_ploidy | cut -f 2`  #`cat ${BAM}.coverage`
 NORMAL_COV=`grep "Estimated normal haplotype coverage" weaver_ploidy | cut -f 2`  #`cat ${BAM}.coverage`
